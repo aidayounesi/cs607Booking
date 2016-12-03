@@ -63,4 +63,4 @@ public class Room {
 	
 }
 
-enum RoomType{ Single, Double, Studio, Suite };
+ enum RoomType{ Single, Double, Studio, Suite };

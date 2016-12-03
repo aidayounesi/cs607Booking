@@ -16,33 +16,42 @@ public class CheckAvailablity {
 List<Integer> checkAvailablity(Date Check_InDate,Date Check_OutDate){
 		
 		List<Integer> i = new ArrayList<Integer>();
-		
-
-		
 		for(Room r: h.room){
-			
 		booked = false;
-		
-		
 			for(Date d = Check_InDate; d.compareTo(Check_OutDate)<0; d = new Date(d.getTime() + (1000 * 60 * 60 * 24))){
 				if(!booked){
 				if(r.getBooked().contains(d)){
-					booked = true;
-					
+					booked = true;	
 				}
-			}else
-				break;
-				
-		}
+				}else
+					break;
+			}
 			if(!booked)
 				i.add(r.getNumber());
-			
-	}
-		return i;
-		
+		}
+	return i;
 }
 
-
+List<Integer> checkAvailablity(Date Check_InDate,Date Check_OutDate, core.RoomType type){
+	
+	List<Integer> i = new ArrayList<Integer>();
+	for(Room r: h.room){
+		if(r.getType() == type){
+	booked = false;
+		for(Date d = Check_InDate; d.compareTo(Check_OutDate)<0; d = new Date(d.getTime() + (1000 * 60 * 60 * 24))){
+			if(!booked){
+			if(r.getBooked().contains(d)){
+				booked = true;	
+			}
+			}else
+				break;
+		}
+		if(!booked)
+			i.add(r.getNumber());
+		}
+	}
+return i;
+}
 
 boolean checkAvailablity(Room r,Date Check_InDate,Date Check_OutDate){
 	

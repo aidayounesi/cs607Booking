@@ -55,11 +55,13 @@ public class DatabaseHandler {
 
     }
 
-    public float getRate(Date date) {}
+    public float getRate(Date date) {
+		return 0;}
 
     public void setRate(Date date, float rate){}
 
-    public int getBasePrice(String roomType) {}
+    public int getBasePrice(String roomType) {
+		return 0;}
 
     public void setBasePrice(String roomType, int price) {}
 
