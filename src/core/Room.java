@@ -3,41 +3,51 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+
+enum RoomType {
+	Single, Double, Studio, Suite
+	};
+
+//TODO: add toString function
 public class Room {
 
-	
-	private int number;
-	
-	private Set<Date> booked = new HashSet<Date>();
+	private int id;
 	private RoomType type;
 	private int price = 100; // base price
+	private Set<Date> booked = new HashSet<Date>();
 	
-	Room(int num,RoomType type){
-		this.number = num;
+	public Room( int id, RoomType type ) {
+		this.id = id;
 		this.type = type;
 		
-		if(type == RoomType.Single){
-			this.price = price;
-		}else if(type == RoomType.Double){
+		switch (type) {
+		case Double:
 			this.price = 2*price - 5;
-		}else if(type == RoomType.Studio){
+			break;
+		case Studio:
 			this.price = 2*price + 50;
-		}else if(type == RoomType.Suite){
+			break;
+		case Suite:
 			this.price = 2*price + 100;
+			break;
+		default:
+			break;			
 		}
 	}
 	
-	public Integer getNumber() {
-		return number;
+	public Integer getId() {
+		return id;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	
+	public void setId( int id ) {
+		this.id = id;
 	}
 	
 	public Set<Date> getBooked() {
 		return booked;
 	}
-	public void setBooked(Date booked) {
+	
+	public void addBooked(Date booked) {
 		this.booked.add(booked);
 	}
 	
@@ -45,6 +55,7 @@ public class Room {
 		if(booked.contains(dateToRemove))
 			booked.remove(dateToRemove);
 	}
+	
 	public RoomType getType() {
 		return type;
 	}
@@ -52,15 +63,13 @@ public class Room {
 	private void setType(RoomType type) {
 		this.type = type;
 	}
-	public int getPrice() {
+	
+	public int getBasePrice() {
 		return price;
 	}
-	////////ImMutable///////
-	private void setPrice(int price) {
-		
-		
+	
+	private void setBasePrice(int price) {
+		this.price = price;
 	}
 	
 }
-
- enum RoomType{ Single, Double, Studio, Suite };
